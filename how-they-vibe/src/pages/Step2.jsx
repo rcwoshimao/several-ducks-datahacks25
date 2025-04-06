@@ -5,7 +5,7 @@ import PulseLoader from "../components/PulseLoader/PulseLoader";
 const Step2 = ({ onAnalysisComplete }) => {
     const [round, setRound] = useState(0);
     const [isAnalyzingDone, setIsAnalyzingDone] = useState(false);
-    const totalRounds = 4;
+    const totalRounds = 8;
 
     useEffect(() => {
         // Check if analysis is complete
@@ -18,7 +18,7 @@ const Step2 = ({ onAnalysisComplete }) => {
         // Start the round
         const timeout = setTimeout(() => {
             setRound(prev => prev + 1);
-        }, 0);
+        }, 5000);
 
         return () => clearTimeout(timeout);
     }, [round, totalRounds, onAnalysisComplete]);

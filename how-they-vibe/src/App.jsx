@@ -67,12 +67,11 @@ function App() {
       
       // --- Success ---
       console.log("API request successful, proceeding to Step 2.");
+      setStep(2); // Move to Step 2 (Analyzing page)
       
       // If you need data *back* from the API before proceeding:
       const result = await response.json();
       console.log("API Response Data:", result);
-      
-      setStep(2); // Move to Step 2 (Analyzing page)
 
     } catch (err) {
       // --- Error Handling ---
