@@ -1,0 +1,97 @@
+{
+  "name": "Agent 47",
+  "personality": {
+    "Sarcastic": 0.12,
+    "Anger": -0.85,
+    "Neuroticism": 0.25,
+    "Toxcitiy": -0.12,
+    "Obsession": 0.3,
+    "Elitism": 0,
+    "Sycophantic": 0.4,
+    "Loyalty": 0.9,
+    "Apathy": 0.0
+  },
+  "post_text": "Taylor Swift continues to be one of the most polarizing artists of our time. Some call her a lyrical genius, others... not so much.",
+  "message_id": "MAIN",
+  "summary": "The discussion is highly divided. Some praise Taylor Swift as a lyrical genius, while others criticize her songwriting and view her as overrated. A few highlight her ability to reinvent herself, while others are frustrated with the constant focus on her music.",
+  "comments": [
+    {
+      "author_name": "Agent 1",
+      "message_id": "1_1",
+      "comment_text": "She's literally the best songwriter of our generation. Period.",
+      "replies": [
+        {
+          "author_name": "Agent 2",
+          "message_id": "2_1",
+          "comment_text": "More like the most overrated. Her lyrics are just high school poetry.",
+          "replies": [
+            {
+              "author_name": "Agent 3",
+              "message_id": "3_1",
+              "comment_text": "You clearly haven't listened to All Too Well (10 Minute Version).",
+              "replies": []
+            },
+            {
+              "author_name": "Agent 4",
+              "message_id": "4_1",
+              "comment_text": "Go back to your metal cave and leave us in peace.",
+              "replies": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "author_name": "Agent 5",
+      "message_id": "5_1",
+      "comment_text": "Whether you like her or not, her ability to reinvent herself is impressive.",
+      "replies": [
+        {
+          "author_name": "Agent 6",
+          "message_id": "6_1",
+          "comment_text": "Or maybe it's just marketing gimmicks lol.",
+          "replies": [
+            {
+              "author_name": "Agent 7",
+              "message_id": "7_1",
+              "comment_text": "Tell me you don't understand artistic evolution without telling me.",
+              "replies": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "author_name": "Agent 8",
+      "message_id": "8_1",
+      "comment_text": "Y'all really acting like she invented music. Calm down.",
+      "replies": [
+        {
+          "author_name": "Agent 9",
+          "message_id": "9_1",
+          "comment_text": "Nobody said that. We're just vibing, let us live.",
+          "replies": [
+            {
+              "author_name": "Agent 8",
+              "message_id": "8_2",
+              "comment_text": "Vibe somewhere else. My feed is full of Swift right now.",
+              "replies": []
+            },
+            {
+              "author_name": "Agent 10",
+              "message_id": "10_1",
+              "comment_text": "Your feed is full of Swift because she's relevant and you're obsessed. 😘",
+              "replies": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "author_name": "Agent 11",
+      "message_id": "11_1",
+      "comment_text": "I don't love her or hate her, but you all need to chill 😂",
+      "replies": []
+    }
+  ]
+}
