@@ -4,8 +4,9 @@ from dotenv import load_dotenv
 import os
 import random
 import math
+import re
 
-AGENT_PERSONAS_FILE = "agent_personas.json"
+AGENT_PERSONAS_FILE = "agents/agent_personas.json"
 
 try:
     env_path = os.path.join(os.path.dirname(__file__), "../.env")
@@ -53,13 +54,21 @@ def get_agent_response(agent, prompt, temperature):
     
     if response.text:
         cleaned_response_text = response.text.strip().strip('```json').strip('```').strip()
+        cleaned_response_text = re.sub(r'[\U00010000-\U0010ffff]', '', cleaned_response_text)
+        try:
+            cleaned_response_text = cleaned_response_text.split("```json")[1]
+        except Exception as e:
+            pass
         # print(cleaned_response_text)
 
         try:
             parsed_json = json.loads(cleaned_response_text)
+            print(cleaned_response_text)
             return parsed_json
         except json.JSONDecodeError:
             print("\n--- Warning: Could not parse response text as JSON. ---")
+            print(cleaned_response_text)
+            print("\n")
         except Exception as e:
             print(f"\n--- Error processing parsed JSON: {e} ---")
     else:
@@ -67,7 +76,7 @@ def get_agent_response(agent, prompt, temperature):
         try:
             print(f"Finish Reason: {response.candidates[0].finish_reason}")
             print(f"Safety Ratings: {response.candidates[0].safety_ratings}")
-        except (IndexError, AttributeError):
+        except (IndexError, AttributeError):    
             pass
         if response.prompt_feedback:
             print(f"Prompt Feedback: {response.prompt_feedback}")    
@@ -115,7 +124,7 @@ def merge(response, output_response):
         "comment_text": response["comment_text"],
         "replies": []
     }
-    
+
     if reply_to == "MAIN":
         output_response["replies"].append(new_comment)
         return output_response
@@ -147,7 +156,7 @@ def simulate(
     
     if input_file_path is None:
         print("No input file path provided. Reverting to default.")
-        input_file_path = os.path.join(os.path.dirname(__file__), "sample_msg.json")
+        input_file_path = os.path.join(os.path.dirname(__file__), "agents/sample_msg.json")
     
     try:
         with open(input_file_path, 'r', encoding='utf-8') as input_file:
@@ -162,7 +171,7 @@ def simulate(
         exit()
     
     # --- Construct the Prompt from File ---
-    prompt_filename = "prompt.txt"
+    prompt_filename = "agents/prompt.txt"
     prompt = None
     
     print(f"Reading prompt template from file: {prompt_filename}")
@@ -218,8 +227,11 @@ def simulate(
         if not interested_agents:
             print("All agents are apathetic. Ending simulation.")
             break
+        round_agents = min(round_agents, len(interested_agents))
         interested_agents = random.sample(list(interested_agents), k=round_agents)
         
+        initial_responses = []
+
         for i in interested_agents:
             agent_personality = agents[i]
             # need to load the agent persona and name into the input_thread_json then convert to a string
@@ -248,11 +260,19 @@ def simulate(
                     apathetic_agents.add(i)
             else:
                 print(f"Agent {i} failed to generate a response.")
-        
+        for reply in initial_responses:
+            new_response = merge(reply, output_response)
+            if new_response is None:
+                print("Error: Could not merge response.")
+                print(f"Reply: {reply}")
+                continue  
+            else:
+                print(f"{reply['author_name']} merged their response.")
+                output_response = new_response.copy()                
     
 
     formatted = json.dumps(output_response, indent=4)
-    print(formatted)
+    return formatted
 
 if __name__ == "__main__":
     simulate(
