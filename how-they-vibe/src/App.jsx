@@ -45,7 +45,7 @@ function App() {
 
     // Create FormData to send file and name
     const formData = new FormData();
-    formData.append('audioFile', audioFile); // Key 'audioFile' - adjust if your server expects different
+    formData.append('audio', audioFile); // Key 'audioFile' - adjust if your server expects different
     formData.append('trackName', trackName); // Key 'trackName' - adjust if needed
 
     try {
