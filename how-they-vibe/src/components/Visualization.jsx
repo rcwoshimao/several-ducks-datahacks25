@@ -100,10 +100,14 @@ const AgentAnalytics = ({ data }) => {
         <h2 className="text-xl font-semibold mb-2">Personality Parallel Coordinates</h2>
         <ParallelCoordinatesChart agentData={data} />
       </div>
+
+
       <div>
         <h2 className="text-xl font-semibold mb-2">Sentiment Pie Chart</h2>
         <SentimentPieChart sentimentScores={sentimentSummary} />
       </div>
+
+      
       <div className="col-span-1 md:col-span-2">
         <h2 className="text-xl font-semibold mb-2">Comment Word Cloud</h2>
         
