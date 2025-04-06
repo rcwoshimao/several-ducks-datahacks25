@@ -36,18 +36,16 @@ const ParallelCoordinatesChart = ({ agentData }) => {
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const SentimentPieChart = ({ sentimentScores }) => {
-  const chartRef = useRef(null); // Ref for the chart
+  const chartRef = useRef(null); 
 
   useEffect(() => {
     const chartInstance = chartRef.current;
-
-    // Clean up the chart on component unmount or when data changes
     return () => {
       if (chartInstance && chartInstance.chart) {
         chartInstance.chart.destroy();
       }
     };
-  }, [sentimentScores]); // Trigger cleanup when sentimentScores changes
+  }, [sentimentScores]); 
 
   const data = {
     labels: Object.keys(sentimentScores),
@@ -72,22 +70,41 @@ const SentimentPieChart = ({ sentimentScores }) => {
 };
 
 const WordCloudComponent = ({ data }) => {
-  const wordCloudData = data.wordCloudData;
-
-  // Add a check to ensure wordCloudData exists and is an array with length > 0
-  if (!wordCloudData || wordCloudData.length === 0) {
-    return <p>No word cloud data available.</p>;
-  }
-
-  return (
-    <div>
-      {/* Pass the wordCloudData to the WordCloud visualization component */}
-      <WordCloud words={wordCloudData} />
-    </div>
-  );
-};
+    const wordCloudData = data?.wordCloudData;
+  
+    if (!Array.isArray(wordCloudData) || wordCloudData.length === 0) {
+      return <p>No word cloud data available.</p>;
+    }
+  
+    // Filter for valid word entries (text and value must exist)
+    const validWords = wordCloudData.filter(
+      (word) =>
+        word &&
+        typeof word.text === 'string' &&
+        typeof word.value === 'number' &&
+        word.text.length > 0
+    );
+  
+    if (validWords.length === 0) {
+      return <p>No valid word cloud data found.</p>;
+    }
+  
+    return (
+      <div>
+        <WordCloud
+          data={validWords}
+          fontSizeMapper={(word) => Math.log2(word.value) * 5}
+          rotate={0}
+          padding={2}
+        />
+      </div>
+    );
+  };
+  
 
 const AgentAnalytics = ({ data }) => {
+    console.log("📊 AgentAnalytics received data:", data);
+  
     const sentimentSummary = {
       Positive: 3,
       Negative: 4,
@@ -111,7 +128,7 @@ const AgentAnalytics = ({ data }) => {
         {/* Word Cloud */}
         <div className="col-span-1 bg-white p-4 rounded-lg shadow-md">
           <h2 className="text-xl font-semibold mb-4">Comment Word Cloud</h2>
-          {/*<WordCloudComponent data={data} />*/}
+          <WordCloudComponent data={data} />
         </div>
       </div>
     );
