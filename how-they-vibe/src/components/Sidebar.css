@@ -23,12 +23,8 @@
     padding: 15px 20px;
     border-radius: 5px;
     margin-bottom: 10px;
-    cursor: pointer;
+    cursor: default; /* Disable click cursor */
     transition: background-color 0.2s ease;
-  }
-  
-  .sidebar li:hover {
-    background-color: #444444;
   }
   
   /* Styles for active/completed/inactive steps */
@@ -57,8 +53,18 @@
     padding: 20px;
   }
   
-  /* Basic styling for page transitions */
-  .page {
-    transition: transform 0.5s ease;
+  /* Button Styles */
+  button {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  button:hover {
+    background-color: #2563eb;
   }
   

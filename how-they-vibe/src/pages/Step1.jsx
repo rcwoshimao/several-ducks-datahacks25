@@ -28,12 +28,6 @@ const Step1 = () => {
         onChange={handleAudioUpload}
         className="w-full mb-4"
       />
-      <button
-        onClick={() => alert("Track uploaded!")}
-        className="bg-blue-500 text-white px-6 py-2 rounded"
-      >
-        Analyze
-      </button>
     </div>
   );
 };

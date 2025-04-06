@@ -26,12 +26,6 @@ const Step2 = () => {
       <div className="w-full bg-gray-200 h-2 mb-4">
         <div className="bg-blue-500 h-2" style={{ width: `${(round / 5) * 100}%` }}></div>
       </div>
-      <button
-        className="bg-blue-500 text-white px-6 py-2 rounded"
-        onClick={() => alert("Analysis done!")}
-      >
-        See Results
-      </button>
     </div>
   );
 };

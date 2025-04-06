@@ -14,12 +14,6 @@ const Step3 = () => {
         <h4 className="text-lg font-semibold">Sentiment Visualization</h4>
         {/* Add your charts here */}
       </div>
-      <button
-        className="bg-blue-500 text-white px-6 py-2 rounded"
-        onClick={() => alert("Moving to next step!")}
-      >
-        Try New Track
-      </button>
     </div>
   );
 };

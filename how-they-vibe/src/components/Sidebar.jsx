@@ -1,7 +1,7 @@
 import React from "react";
-import './Sidebar.css'; 
+import "./Sidebar.css"; 
 
-const Sidebar = ({ currentStep, setStep }) => {
+const Sidebar = ({ currentStep }) => {
   const steps = ["Upload", "Analyze", "Results"];
 
   return (
@@ -18,11 +18,7 @@ const Sidebar = ({ currentStep, setStep }) => {
               : "inactive";
 
           return (
-            <li
-              key={stepNumber}
-              className={`${stepStatus}`}
-              onClick={() => setStep(stepNumber)}
-            >
+            <li key={stepNumber} className={stepStatus}>
               {step}
             </li>
           );
