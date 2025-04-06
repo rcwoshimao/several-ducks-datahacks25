@@ -1,19 +1,39 @@
 {
-  "name": "Agent 47",
-  "personality": {
-    "Sarcastic": 0.12,
-    "Anger": -0.85,
-    "Neuroticism": 0.25,
-    "Toxcitiy": -0.12,
-    "Obsession": 0.3,
-    "Elitism": 0,
-    "Sycophantic": 0.4,
-    "Loyalty": 0.9,
-    "Apathy": 0.0
-  },
+  "agents": [
+    {
+      "name": "Agent 47",
+      "personality": {
+        "Sarcasm": 0.12,
+        "Temperament": -0.85,
+        "Neuroticism": 0.25,
+        "Toxcitiy": -0.12,
+        "Obsession": 0.3,
+        "Elitism": 0,
+        "Sycophant": 0.4,
+        "Loyalty": 0.9,
+        "Confrontational": 0.6,
+        "Openminded": 0.5
+      }
+    },
+    {
+      "name": "Agent 24",
+      "personality": {
+        "Sarcasm": -0.9,
+        "Temperament": -0.96,
+        "Neuroticism": -0.19,
+        "Toxcitiy": 0.07,
+        "Obsession": -0.09,
+        "Elitism": -0.25,
+        "Sycophant": -0.73,
+        "Loyalty": -0.99,
+        "Confrontational": -0.09,
+        "Openminded": 0.62
+      }
+    }
+  ],
   "post_text": "Taylor Swift continues to be one of the most polarizing artists of our time. Some call her a lyrical genius, others... not so much.",
   "message_id": "MAIN",
-  "comments": [
+  "replies": [
     {
       "author_name": "Agent 1",
       "message_id": "1_1",
