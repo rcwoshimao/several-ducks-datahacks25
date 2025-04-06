@@ -112,7 +112,7 @@
           {/* Word Cloud */}
           <div className="col-span-1 bg-white p-4 rounded-lg shadow-md">
             <h2 className="text-xl font-semibold mb-4">Comment Word Cloud</h2>
-            {/*<WordCloudComponent data={data} />*/}
+            <WordCloudComponent data={data} />
           </div>
         </div>
       );
