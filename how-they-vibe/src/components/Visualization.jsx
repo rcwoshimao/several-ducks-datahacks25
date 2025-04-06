@@ -5,6 +5,7 @@ import 'tippy.js/animations/scale.css';
 import React, { useEffect, useRef } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+import "./Visualization.css"; 
 
 
 const ParallelCoordinatesChart = ({ agentData }) => {
@@ -29,7 +30,6 @@ const ParallelCoordinatesChart = ({ agentData }) => {
     />
   );
 };
-
 
 
 // Register the required components
@@ -88,34 +88,34 @@ const WordCloudComponent = ({ data }) => {
 };
 
 const AgentAnalytics = ({ data }) => {
-  const sentimentSummary = {
-    Positive: 3,
-    Negative: 4,
-    Neutral: 4,
-  }; // Replace with real sentiment classifier later
-
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
-      <div>
-        <h2 className="text-xl font-semibold mb-2">Personality Parallel Coordinates</h2>
-        <ParallelCoordinatesChart agentData={data} />
+    const sentimentSummary = {
+      Positive: 3,
+      Negative: 4,
+      Neutral: 4,
+    };
+  
+    return (
+      <div className="grid grid-cols-1 gap-6 p-4">
+        {/* Personality Parallel Coordinates */}
+        <div className="bg-white p-1 rounded-lg shadow-md">
+          <h2 className="text-xl font-semibold mb-4">Personality Parallel Coordinates</h2>
+          <ParallelCoordinatesChart className="para-cord" agentData={data} />
+        </div>
+  
+        {/* Sentiment Pie Chart */}
+        <div className="bg-white p-4 rounded-lg shadow-md">
+          <h2 className="text-xl font-semibold mb-4">Sentiment Pie Chart</h2>
+          <SentimentPieChart className="pie" sentimentScores={sentimentSummary} />
+        </div>
+  
+        {/* Word Cloud */}
+        <div className="col-span-1 bg-white p-4 rounded-lg shadow-md">
+          <h2 className="text-xl font-semibold mb-4">Comment Word Cloud</h2>
+          {/*<WordCloudComponent data={data} />*/}
+        </div>
       </div>
-
-
-      <div>
-        <h2 className="text-xl font-semibold mb-2">Sentiment Pie Chart</h2>
-        <SentimentPieChart sentimentScores={sentimentSummary} />
-      </div>
-
-      
-      <div className="col-span-1 md:col-span-2">
-        <h2 className="text-xl font-semibold mb-2">Comment Word Cloud</h2>
-        
-        {/* Pass the actual 'data' to WordCloudComponent */}
-       
-      </div>
-    </div>
-  );
-};
+    );
+  };
+  
 
 export default AgentAnalytics;

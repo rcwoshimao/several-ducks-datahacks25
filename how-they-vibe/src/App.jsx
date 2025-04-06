@@ -6,10 +6,6 @@ import Step2 from "./pages/Step2";
 import Step3 from "./pages/Step3";
 import ModernButton from "./components/ModernButton/ModernButton";
 import "./App.css";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-
-// Register necessary components
-ChartJS.register(ArcElement, Tooltip, Legend);
 
 
 const pageVariants = {
@@ -28,8 +24,8 @@ const API_ENDPOINT = import.meta.env.VITE_API_ENDPOINT || '/api/analyze';
 
 function App() {
   const [step, setStep] = useState(1);
-  const [audioFile, setAudioFile] = useState(null); // Track the uploaded file
-  const [trackName, setTrackName] = useState(""); // Track the track name
+  const [audioFile, setAudioFile] = useState(null);
+  const [trackName, setTrackName] = useState("");
   const [isAnalyzingDone, setIsAnalyzingDone] = useState(false);
   const [isLoading, setIsLoading] = useState(false); 
   const [error, setError] = useState(null); 
@@ -110,7 +106,7 @@ function App() {
     setTrackName(newTrackName);
   };
 
-  const isButtonDisabled = !audioFile || trackName.trim() === ""; // Disable button if either condition is false
+  const isButtonDisabled = !audioFile || trackName.trim() === "";
 
   return (
     <div className="App">
@@ -125,7 +121,7 @@ function App() {
                 initial="initial"
                 animate="animate"
                 exit="exit"
-                className="w-full min-h-[500px]"
+                className="w-full min-h-[500px] relative" // Add relative positioning to avoid overlap
               >
                 <Step1 onFileUploaded={handleFileUpload} trackName={trackName} onTrackNameChange={handleTrackNameChange} />
               </motion.div>
@@ -138,7 +134,7 @@ function App() {
                 initial="initial"
                 animate="animate"
                 exit="exit"
-                className="w-full min-h-[500px]"
+                className="w-full min-h-[500px] relative" // Keep relative positioning
               >
                 <Step2 onAnalysisComplete={() => setIsAnalyzingDone(true)} />
               </motion.div>
@@ -151,7 +147,7 @@ function App() {
                 initial="initial"
                 animate="animate"
                 exit="exit"
-                className="w-full min-h-[500px]"
+                className="w-full min-h-[500px] relative" // Ensure step 3 is correctly positioned
               >
                 <Step3 />
               </motion.div>
@@ -161,7 +157,7 @@ function App() {
 
         <AnimatePresence mode="wait">
           {step === 1 && (
-            <motion.div key="analyze-button" variants={buttonVariants} initial="initial" animate="animate" exit="exit">
+            <motion.div key="analyze-button" variants={buttonVariants} initial="initial" animate="animate" exit="exit" className="relative z-10">
               <ModernButton onClick={handleNextStep} disabled={isButtonDisabled}>
                 Analyze
               </ModernButton>
@@ -169,7 +165,7 @@ function App() {
           )}
 
           {step === 2 && isAnalyzingDone && (
-            <motion.div key="results-button" variants={buttonVariants} initial="initial" animate="animate" exit="exit">
+            <motion.div key="results-button" variants={buttonVariants} initial="initial" animate="animate" exit="exit" className="relative z-10">
               <ModernButton onClick={handleNextStep}>
                 See Results
               </ModernButton>
@@ -177,7 +173,7 @@ function App() {
           )}
 
           {step === 3 && (
-            <motion.div key="new-track-button" variants={buttonVariants} initial="initial" animate="animate" exit="exit">
+            <motion.div key="new-track-button" variants={buttonVariants} initial="initial" animate="animate" exit="exit" className="relative z-10">
               <ModernButton onClick={handleNextStep}>
                 Try New Track
               </ModernButton>
@@ -187,6 +183,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;
