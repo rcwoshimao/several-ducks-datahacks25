@@ -42,7 +42,6 @@
 
   const SentimentPieChart = ({ sentimentScores }) => {
     const chartRef = useRef(null); // Ref for the chart
-
     useEffect(() => {
       const chartInstance = chartRef.current;
 
@@ -72,7 +71,6 @@
         },
       ],
     };
-
     return <Pie ref={chartRef} data={data} />;
   };
 
