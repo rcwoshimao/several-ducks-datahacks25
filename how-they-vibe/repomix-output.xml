@@ -1,0 +1,1385 @@
+This file is a merged representation of a subset of the codebase, containing files not matching ignore patterns, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching these patterns are excluded: node_modules/
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+<additional_info>
+
+</additional_info>
+
+</file_summary>
+
+<directory_structure>
+.gitignore
+eslint.config.js
+index.html
+package.json
+public/sample_msg_copy.json
+README.md
+src/App.css
+src/App.jsx
+src/components/CommentSection/CommentSection.jsx
+src/components/ModernButton/ModernButton.css
+src/components/ModernButton/ModernButton.jsx
+src/components/ProgressBar/ProgressBar.jsx
+src/components/PulseLoader/PulseLoader.jsx
+src/components/Sidebar.css
+src/components/Sidebar.jsx
+src/components/TextInput/TextInput.css
+src/components/TextInput/TextInput.jsx
+src/components/Visualization.jsx
+src/main.jsx
+src/pages/pages.css
+src/pages/Step1.jsx
+src/pages/Step2.jsx
+src/pages/Step3.jsx
+src/ResultContext.jsx
+vite.config.js
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path=".gitignore">
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+</file>
+
+<file path="eslint.config.js">
+import js from '@eslint/js'
+import globals from 'globals'
+import reactHooks from 'eslint-plugin-react-hooks'
+import reactRefresh from 'eslint-plugin-react-refresh'
+
+export default [
+  { ignores: ['dist'] },
+  {
+    files: ['**/*.{js,jsx}'],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
+      parserOptions: {
+        ecmaVersion: 'latest',
+        ecmaFeatures: { jsx: true },
+        sourceType: 'module',
+      },
+    },
+    plugins: {
+      'react-hooks': reactHooks,
+      'react-refresh': reactRefresh,
+    },
+    rules: {
+      ...js.configs.recommended.rules,
+      ...reactHooks.configs.recommended.rules,
+      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      'react-refresh/only-export-components': [
+        'warn',
+        { allowConstantExport: true },
+      ],
+    },
+  },
+]
+</file>
+
+<file path="index.html">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/src/assets/icon.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How They Vibe</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+</file>
+
+<file path="package.json">
+{
+  "name": "how-they-vibe",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@heroicons/react": "^2.2.0",
+    "@tailwindcss/vite": "^4.1.3",
+    "chart.js": "^4.4.8",
+    "framer-motion": "^12.6.3",
+    "plotly.js": "^3.0.1",
+    "react": "^19.0.0",
+    "react-chartjs-2": "^5.3.0",
+    "react-content-loader": "^7.0.2",
+    "react-d3-cloud": "^1.0.6",
+    "react-dom": "^19.0.0",
+    "react-plotly.js": "^2.6.0",
+    "styled-components": "^6.1.17",
+    "tippy.js": "^6.3.7"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.21.0",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.21.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "globals": "^15.15.0",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.1.3",
+    "vite": "^6.2.0"
+  }
+}
+</file>
+
+<file path="public/sample_msg_copy.json">
+{
+  "name": "Agent 47",
+  "personality": {
+    "Sarcastic": 0.12,
+    "Anger": -0.85,
+    "Neuroticism": 0.25,
+    "Toxcitiy": -0.12,
+    "Obsession": 0.3,
+    "Elitism": 0,
+    "Sycophantic": 0.4,
+    "Loyalty": 0.9,
+    "Apathy": 0.0
+  },
+  "post_text": "Taylor Swift continues to be one of the most polarizing artists of our time. Some call her a lyrical genius, others... not so much.",
+  "message_id": "MAIN",
+  "summary": "The discussion is highly divided. Some praise Taylor Swift as a lyrical genius, while others criticize her songwriting and view her as overrated. A few highlight her ability to reinvent herself, while others are frustrated with the constant focus on her music.",
+  "comments": [
+    {
+      "author_name": "Agent 1",
+      "message_id": "1_1",
+      "comment_text": "She's literally the best songwriter of our generation. Period.",
+      "replies": [
+        {
+          "author_name": "Agent 2",
+          "message_id": "2_1",
+          "comment_text": "More like the most overrated. Her lyrics are just high school poetry.",
+          "replies": [
+            {
+              "author_name": "Agent 3",
+              "message_id": "3_1",
+              "comment_text": "You clearly haven't listened to All Too Well (10 Minute Version).",
+              "replies": []
+            },
+            {
+              "author_name": "Agent 4",
+              "message_id": "4_1",
+              "comment_text": "Go back to your metal cave and leave us in peace.",
+              "replies": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "author_name": "Agent 5",
+      "message_id": "5_1",
+      "comment_text": "Whether you like her or not, her ability to reinvent herself is impressive.",
+      "replies": [
+        {
+          "author_name": "Agent 6",
+          "message_id": "6_1",
+          "comment_text": "Or maybe it's just marketing gimmicks lol.",
+          "replies": [
+            {
+              "author_name": "Agent 7",
+              "message_id": "7_1",
+              "comment_text": "Tell me you don't understand artistic evolution without telling me.",
+              "replies": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "author_name": "Agent 8",
+      "message_id": "8_1",
+      "comment_text": "Y'all really acting like she invented music. Calm down.",
+      "replies": [
+        {
+          "author_name": "Agent 9",
+          "message_id": "9_1",
+          "comment_text": "Nobody said that. We're just vibing, let us live.",
+          "replies": [
+            {
+              "author_name": "Agent 8",
+              "message_id": "8_2",
+              "comment_text": "Vibe somewhere else. My feed is full of Swift right now.",
+              "replies": []
+            },
+            {
+              "author_name": "Agent 10",
+              "message_id": "10_1",
+              "comment_text": "Your feed is full of Swift because she's relevant and you're obsessed. 😘",
+              "replies": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "author_name": "Agent 11",
+      "message_id": "11_1",
+      "comment_text": "I don't love her or hate her, but you all need to chill 😂",
+      "replies": []
+    }
+  ],
+  "wordCloudData": [
+    { "text": "her", "value": 12 },
+    { "text": "Taylor", "value": 8 },
+    { "text": "Swift", "value": 8 },
+    { "text": "the", "value": 6 },
+    { "text": "to", "value": 5 },
+    { "text": "she", "value": 5 },
+    { "text": "lyrics", "value": 4 },
+    { "text": "music", "value": 4 },
+    { "text": "best", "value": 3 },
+    { "text": "songwriter", "value": 3 },
+    { "text": "reinvent", "value": 3 },
+    { "text": "herself", "value": 3 },
+    { "text": "generation", "value": 2 },
+    { "text": "high", "value": 2 },
+    { "text": "school", "value": 2 },
+    { "text": "poetry", "value": 2 },
+    { "text": "evolution", "value": 2 },
+    { "text": "marketing", "value": 2 },
+    { "text": "gimmicks", "value": 2 },
+    { "text": "vibe", "value": 2 },
+    { "text": "obsessed", "value": 2 },
+    { "text": "peace", "value": 1 },
+    { "text": "vibing", "value": 1 },
+    { "text": "feed", "value": 1 },
+    { "text": "relevant", "value": 1 },
+    { "text": "chill", "value": 1 },
+    { "text": "cave", "value": 1 },
+    { "text": "invention", "value": 1 },
+    { "text": "all", "value": 1 },
+    { "text": "too", "value": 1 },
+    { "text": "well", "value": 1 },
+    { "text": "metal", "value": 1 },
+    { "text": "again", "value": 1 }
+  ]
+}
+</file>
+
+<file path="README.md">
+# React + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+</file>
+
+<file path="src/App.css">
+/* Global Reset */
+@import "tailwindcss";
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Ubuntu', sans-serif; /* Apply Ubuntu font globally */
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+/* Flexbox layout for App */
+.App {
+  display: flex;
+}
+
+  
+/* App.css */
+
+.page-enter {
+  transform: translateY(100%);
+}
+.page-enter-active {
+  transform: translateY(0);
+  transition: transform 0.5s ease-in-out;
+}
+.page-exit {
+  transform: translateY(0);
+}
+.page-exit-active {
+  transform: translateY(-100%);
+  transition: transform 0.5s ease-in-out;
+}
+</file>
+
+<file path="src/App.jsx">
+import { useState, useContext } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Sidebar from "./components/Sidebar";
+import Step1 from "./pages/Step1";
+import Step2 from "./pages/Step2";
+import Step3 from "./pages/Step3";
+import ModernButton from "./components/ModernButton/ModernButton";
+import { ResultContext } from "./ResultContext";
+import "./App.css";
+
+
+
+const pageVariants = {
+  initial: { opacity: 0, x: 50 },
+  animate: { opacity: 1, x: 0, transition: { duration: 0.7, ease: [0.6, -0.05, 0.01, 0.99] } },
+  exit: { opacity: 0, x: -50, transition: { duration: 0.5 } },
+};
+
+const buttonVariants = {
+  initial: { opacity: 0, scale: 0.8 },
+  animate: { opacity: 1, scale: 1, transition: { duration: 0.4, delay: 0.2 } },
+  exit: { opacity: 0, scale: 0.8, transition: { duration: 0.3 } },
+};
+
+const API_ENDPOINT = import.meta.env.VITE_API_ENDPOINT || '/api/analyze';
+
+function App() {
+  const [step, setStep] = useState(1);
+  const [audioFile, setAudioFile] = useState(null);
+  const [trackName, setTrackName] = useState("");
+  const [isAnalyzingDone, setIsAnalyzingDone] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); 
+  const [error, setError] = useState(null); 
+  const { setResult } = useContext(ResultContext);
+
+  const handleAnalyzeApiCall = async () => {
+    if (!audioFile || !trackName.trim()) {
+      setError("Please provide both a track name and an audio file.");
+      return; // Stop if validation fails
+    }
+
+    setIsLoading(true); // Start loading indicator
+    setError(null); // Clear previous errors
+
+    // Create FormData to send file and name
+    const formData = new FormData();
+    formData.append('audio', audioFile); // Key 'audioFile' - adjust if your server expects different
+    formData.append('trackName', trackName); // Key 'trackName' - adjust if needed
+
+    try {
+      console.log(`Sending analysis request to: ${API_ENDPOINT}`); // For debugging
+      
+      setStep(2); // Move to Step 2 (Analyzing page)
+      
+      const response = await fetch(API_ENDPOINT, {
+        method: 'POST',
+        body: formData,
+      });
+      
+      
+      // Check if the request was successful
+      if (!response.ok) {
+        let errorMsg = `API request failed with status ${response.status}`;
+        try {
+            const errorData = await response.json(); // Try parsing JSON error
+            errorMsg = errorData.message || errorData.error || JSON.stringify(errorData);
+        } catch (e) {
+            errorMsg = `${errorMsg}: ${await response.text()}`; // Fallback to text error
+        }
+        throw new Error(errorMsg);
+      }
+
+      
+      // --- Success ---
+      console.log("API request successful, proceeding to Step 2.");
+      
+      // If you need data *back* from the API before proceeding:
+      const result = await response.json();
+      setResult(result);
+      console.log("API Response Data:", result);
+
+    } catch (err) {
+      // --- Error Handling ---
+      console.error("API Call Error:", err);
+      setError(err.message || "An unknown error occurred during analysis.");
+      // Stay on Step 1 to show the error
+    } finally {
+      // --- Cleanup ---
+      setIsLoading(false); // Stop loading indicator regardless of success/failure
+    }
+  };
+
+  const handleNextStep = () => {
+    if (step === 1) {
+      handleAnalyzeApiCall();
+    } else if (step === 2 && isAnalyzingDone) {
+      setStep(3);
+    } else if (step === 3) {
+      setIsAnalyzingDone(false);
+      setStep(1);
+    }
+  };
+
+  const handleFileUpload = (fileUploaded) => {
+    if (fileUploaded) {
+      setAudioFile(fileUploaded);
+    }
+  };
+
+  const handleTrackNameChange = (newTrackName) => {
+    setTrackName(newTrackName);
+  };
+
+  const isButtonDisabled = !audioFile || trackName.trim() === "";
+
+  return (
+    <div className="App">
+      <Sidebar currentStep={step} />
+      <div className="main-content p-8 flex flex-col items-center">
+        <div className="w-full max-w-4xl mb-8 relative min-h-[500px] flex flex-col items-center">
+          <AnimatePresence mode="wait">
+            {step === 1 && (
+              <motion.div
+                key="step1"
+                variants={pageVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                className="w-full min-h-[500px] relative" // Add relative positioning to avoid overlap
+              >
+                <Step1 onFileUploaded={handleFileUpload} trackName={trackName} onTrackNameChange={handleTrackNameChange} />
+              </motion.div>
+            )}
+
+            {step === 2 && (
+              <motion.div
+                key="step2"
+                variants={pageVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                className="w-full min-h-[500px] relative" // Keep relative positioning
+              >
+                <Step2 onAnalysisComplete={() => setIsAnalyzingDone(true)} />
+              </motion.div>
+            )}
+
+            {step === 3 && (
+              <motion.div
+                key="step3"
+                variants={pageVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                className="w-full min-h-[500px] relative" // Ensure step 3 is correctly positioned
+              >
+                <Step3 />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+
+        <AnimatePresence mode="wait">
+          {step === 1 && (
+            <motion.div key="analyze-button" variants={buttonVariants} initial="initial" animate="animate" exit="exit" className="relative z-10">
+              <ModernButton onClick={handleNextStep} disabled={isButtonDisabled}>
+                Analyze
+              </ModernButton>
+            </motion.div>
+          )}
+
+          {step === 2 && isAnalyzingDone && (
+            <motion.div key="results-button" variants={buttonVariants} initial="initial" animate="animate" exit="exit" className="relative z-10">
+              <ModernButton onClick={handleNextStep}>
+                See Results
+              </ModernButton>
+            </motion.div>
+          )}
+
+          {step === 3 && (
+            <motion.div key="new-track-button" variants={buttonVariants} initial="initial" animate="animate" exit="exit" className="relative z-10">
+              <ModernButton onClick={handleNextStep}>
+                Try New Track
+              </ModernButton>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </div>
+  );
+};
+
+export default App;
+</file>
+
+<file path="src/components/CommentSection/CommentSection.jsx">
+import React from 'react'
+import { ChatBubbleLeftIcon, HeartIcon, ShareIcon } from '@heroicons/react/24/outline'
+
+// Mock data for comments
+const mockComments = [
+  {
+    author_name: "Alice",
+    message_id: "comment1",
+    comment_text: "This is an interesting post about agent interactions!",
+    replies: [
+      {
+        author_name: "Bob",
+        message_id: "reply1",
+        comment_text: "I totally agree with you, Alice!",
+        replies: [
+          {
+            author_name: "Charlie",
+            message_id: "subreply1",
+            comment_text: "Bob, you're spot on!",
+            replies: []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    author_name: "David",
+    message_id: "comment2",
+    comment_text: "Some really fascinating insights here.",
+    replies: []
+  }
+]
+
+function CommentThread({ comments, depth = 0 }) {
+  return (
+    <div className="space-y-4">
+      {comments.map((comment) => (
+        <div 
+          key={comment.message_id} 
+          className={`
+            bg-white rounded-lg p-4 
+            ${depth > 0 ? 'ml-8 border-l-2 border-gray-200' : ''}
+          `}
+        >
+          <div className="flex items-start space-x-3">
+            <div className="bg-gray-200 border-2 border-dashed rounded-full w-10 h-10" />
+            
+            <div className="flex-1">
+              <div className="flex items-center space-x-2">
+                <span className="font-bold text-sm">{comment.author_name}</span>
+                <span className="text-xs text-gray-500">@{comment.author_name.toLowerCase()}</span>
+              </div>
+              
+              <p className="text-sm text-gray-800 mt-1">{comment.comment_text}</p>
+              
+              <div className="flex space-x-4 text-gray-500 mt-2">
+                <button className="flex items-center space-x-1 hover:text-blue-500">
+                  <ChatBubbleLeftIcon className="h-4 w-4" />
+                  <span className="text-xs">Reply</span>
+                </button>
+                <button className="flex items-center space-x-1 hover:text-red-500">
+                  <HeartIcon className="h-4 w-4" />
+                  <span className="text-xs">Like</span>
+                </button>
+                <button className="flex items-center space-x-1 hover:text-green-500">
+                  <ShareIcon className="h-4 w-4" />
+                  <span className="text-xs">Share</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          {comment.replies && comment.replies.length > 0 && (
+            <div className="mt-4">
+              <CommentThread comments={comment.replies} depth={depth + 1} />
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  )
+}
+
+export default function CommentsSection() {
+  return (
+    <div className="max-w-2xl mx-auto bg-gray-50 p-6 rounded-xl">
+      <h2 className="text-xl font-bold mb-6 text-gray-800">Comments</h2>
+      <CommentThread comments={mockComments} />
+    </div>
+  )
+}
+</file>
+
+<file path="src/components/ModernButton/ModernButton.css">
+.animated-button {
+  margin: 40px auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 36px;
+  border: 4px solid;
+  border-color: transparent;
+  font-size: 16px;
+  background-color: inherit;
+  border-radius: 100px;
+  font-weight: 600;
+  color: #000000;
+  box-shadow: 0 0 0 2px #000000;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button svg {
+  position: absolute;
+  width: 24px;
+  fill: #000000;
+  z-index: 9;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button .arr-1 {
+  right: 16px;
+}
+
+.animated-button .arr-2 {
+  left: -25%;
+}
+
+.animated-button .circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background-color: #000000;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button .text {
+  position: relative;
+  z-index: 1;
+  transform: translateX(-12px);
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button:hover {
+  box-shadow: 0 0 0 12px transparent;
+  color: #ffffff;
+  border-radius: 12px;
+}
+
+.animated-button:hover .arr-1 {
+  right: -25%;
+}
+
+.animated-button:hover .arr-2 {
+  left: 16px;
+}
+
+.animated-button:hover .text {
+  transform: translateX(12px);
+}
+
+.animated-button:hover svg {
+  fill: #ffffff;
+}
+
+.animated-button:active {
+  scale: 0.95;
+  box-shadow: 0 0 0 4px #000000;
+}
+
+.animated-button:hover .circle {
+  width: 220px;
+  height: 220px;
+  opacity: 1;
+}
+
+/* Disabled Button Styles */
+.animated-button.disabled {
+  background-color: #f0f0f0; /* Grey background */
+  color: #aaa; /* Grey text */
+  border-color: #d3d3d3; /* Grey border */
+  cursor: not-allowed; /* Disable pointer */
+}
+
+.animated-button.disabled:hover {
+  box-shadow: none; /* Remove hover effect */
+  background-color: #f0f0f0; /* Keep grey background */
+  color: #aaa; /* Keep grey text */
+}
+
+.animated-button.disabled .arr-1,
+.animated-button.disabled .arr-2 {
+  fill: #d3d3d3; /* Grey arrow */
+}
+</file>
+
+<file path="src/components/ModernButton/ModernButton.jsx">
+import React from 'react';
+import './ModernButton.css'; // Ensure styles are imported
+
+const ModernButton = ({ onClick, children, disabled }) => {
+  return (
+    <button 
+      className={`animated-button ${disabled ? 'disabled' : ''}`} 
+      onClick={onClick} 
+      disabled={disabled}
+    >
+      <svg viewBox="0 0 24 24" className="arr-2" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z" />
+      </svg>
+      <span className="text">{children}</span>
+      <span className="circle" />
+      <svg viewBox="0 0 24 24" className="arr-1" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z" />
+      </svg>
+    </button>
+  );
+};
+
+export default ModernButton;
+</file>
+
+<file path="src/components/ProgressBar/ProgressBar.jsx">
+import React from "react";
+
+const ProgressBar = ({ title, value }) => {
+  return (
+    <div>
+      <div className="mb-2 flex justify-between items-center">
+        <h3 className="text-sm font-semibold text-gray-800">{title}</h3>
+        <span className="text-sm text-gray-800">{value}%</span>
+      </div>
+      <div
+        className="flex w-full h-6 bg-gray-200 rounded-full overflow-hidden"
+        role="progressbar"
+        aria-valuenow={value}
+        aria-valuemin="0"
+        aria-valuemax="100"
+      >
+        <div
+          className="flex flex-col justify-center rounded-full overflow-hidden bg-yellow-500 text-xs text-white text-center whitespace-nowrap transition duration-500"
+          style={{ width: `${value}%` }}
+        ></div>
+      </div>
+    </div>
+  );
+};
+
+export default ProgressBar;
+</file>
+
+<file path="src/components/PulseLoader/PulseLoader.jsx">
+import ContentLoader from "react-content-loader";
+
+const PulseLoader = () => (
+  <ContentLoader
+    className="content-loader"
+    viewBox="0 0 466 160"
+    height={160}
+    width={466}
+    speed={1.5}
+    backgroundColor="#f3f3f3"
+    foregroundColor="#ecebeb"
+  >
+    <circle cx="39" cy="25" r="16" />
+    <rect x="59" y="12" rx="5" ry="5" width="220" height="10" />
+    <rect x="60" y="29" rx="5" ry="5" width="220" height="10" />
+    
+    <circle cx="440" cy="71" r="16" />
+    <rect x="199" y="76" rx="5" ry="5" width="220" height="10" />
+    <rect x="199" y="58" rx="5" ry="5" width="220" height="10" />
+
+    <circle cx="41" cy="117" r="16" />
+    <rect x="65" y="104" rx="5" ry="5" width="220" height="10" />
+    <rect x="65" y="122" rx="5" ry="5" width="220" height="10" />
+  </ContentLoader>
+);
+
+export default PulseLoader;
+</file>
+
+<file path="src/components/Sidebar.css">
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    background-color: #2d2d2d;
+    color: white;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    padding: 20px;
+  }
+  
+  .sidebar h2 {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar li {
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    cursor: default; /* Disable click cursor */
+    transition: color 0.2s ease;
+  }
+  
+  /* Styles for active/completed/inactive steps */
+  .sidebar li.active {
+    color: #9bc2ff; /* Blue for active step */
+  }
+  
+  .sidebar li.completed {
+    color: #10b981; /* Green for completed step */
+  }
+  
+  .sidebar li.inactive {
+    color: #959595; /* Grey for inactive steps */
+  }
+  
+  /* Mark the check icon for completed steps */
+  .sidebar li.completed::after {
+    content: " ✔";
+    color: #ffffff;
+    margin-left: 10px;
+  }
+  
+  /* Main content styles */
+  .main-content {
+    flex-grow: 1;
+    padding: 20px;
+  }
+
+
+  .step-icon {
+    margin-right: 10px;
+    width: 20px; /* You can adjust the icon size */
+    height: 20px;
+  }
+
+  .sidebar-steps{
+    display: flex; 
+  }
+</file>
+
+<file path="src/components/Sidebar.jsx">
+import React from "react";
+import "./Sidebar.css"; 
+import upload from "./../assets/upload.png"; 
+import analyze from "./../assets/analyze.png"; 
+import results from "./../assets/results.png"; 
+
+const Sidebar = ({ currentStep }) => {
+    const steps = [
+        { name: "Upload", icon: upload },
+        { name: "Analyze", icon: analyze},
+        { name: "Results", icon: results },
+      ];
+
+  return (
+    <div className="sidebar">
+      <h2>How They Vibe</h2>
+      <ul>
+        {steps.map((step, index) => {
+          const stepNumber = index + 1;
+          const stepStatus =
+            currentStep === stepNumber
+              ? "active"
+              : currentStep > stepNumber
+              ? "completed"
+              : "inactive";
+
+          return (
+            <li key={stepNumber} className={`sidebar-steps ${stepStatus}`}>
+              <img
+                src={step.icon} // Dynamically load the image based on step
+                alt={step.name}
+                className="step-icon"
+              />
+              {step.name}
+
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+};
+
+export default Sidebar;
+</file>
+
+<file path="src/components/TextInput/TextInput.css">
+.textinput{
+    margin: 30px; 
+}
+</file>
+
+<file path="src/components/TextInput/TextInput.jsx">
+import React from 'react';
+import './TextInput.css';
+
+const TextInput = ({ placeholder, value, onChange }) => {
+  return (
+    <div className="textinput max-w-sm space-y-3">
+      <div className="relative">
+        <input
+          value={value}
+          onChange={onChange}
+          className="peer py-4 sm:py-5 pe-0 ps-8 block w-[400px] bg-transparent border-t-transparent border-b-2 border-x-transparent border-b-gray-200 sm:text-lg focus:border-t-transparent focus:border-x-transparent focus:outline-none focus:border-b-black focus:ring-0 disabled:opacity-50 disabled:pointer-events-none transition-all duration-300"
+          placeholder={placeholder}
+        />
+      </div>
+    </div>
+  );
+};
+
+export default TextInput;
+</file>
+
+<file path="src/components/Visualization.jsx">
+import Plot from 'react-plotly.js';
+  import WordCloud from 'react-d3-cloud';
+  import 'tippy.js/dist/tippy.css';
+  import 'tippy.js/animations/scale.css';
+  import React, { useEffect, useRef, useContext } from 'react';
+  import { Pie } from 'react-chartjs-2';
+  import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+  import "./Visualization.css"; 
+  import { ResultContext } from '../ResultContext';
+
+  const ParallelCoordinatesChart = ({ agentData }) => {
+    const firstAgentPersonality = agentData.parallel.agents[0].personality;
+    const dimensions = Object.entries(firstAgentPersonality).map(([trait, value]) => ({
+      range: [-1, 1],
+      label: trait,
+      values: [parseInt(value, 10)],
+    }));
+
+    return (
+      <Plot
+        data={[{
+          type: 'parcoords',
+          line: { color: 'blue' },
+          dimensions,
+        }]}
+        layout={{
+          margin: { l: 40, r: 40, t: 20, b: 20 },
+          width: 700,
+          height: 300,
+        }}
+      />
+    );
+  };
+
+
+  // Register the required components
+  ChartJS.register(ArcElement, Tooltip, Legend);
+
+  const SentimentPieChart = ({ sentimentScores }) => {
+    const chartRef = useRef(null); // Ref for the chart
+
+    useEffect(() => {
+      const chartInstance = chartRef.current;
+
+      // Clean up the chart on component unmount or when data changes
+      return () => {
+        if (chartInstance && chartInstance.chart) {
+          chartInstance.chart.destroy();
+        }
+      };
+    }, [sentimentScores]); // Trigger cleanup when sentimentScores changes
+
+    const data = {
+      labels: Object.keys(sentimentScores),
+      datasets: [
+        {
+          label: 'Sentiment Distribution',
+          data: Object.values(sentimentScores),
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.6)',
+            'rgba(54, 162, 235, 0.6)',
+            'rgba(255, 206, 86, 0.6)',
+            'rgba(75, 192, 192, 0.6)',
+            'rgba(153, 102, 255, 0.6)',
+            'rgba(255, 159, 64, 0.6)',
+          ],
+          borderWidth: 1,
+        },
+      ],
+    };
+
+    return <Pie ref={chartRef} data={data} />;
+  };
+
+  const WordCloudComponent = ({ data }) => {
+    const wordCloudData = data.wordCloudData;
+
+    // Add a check to ensure wordCloudData exists and is an array with length > 0
+    if (!wordCloudData || wordCloudData.length === 0) {
+      return <p>No word cloud data available.</p>;
+    }
+
+    return (
+      <div>
+        {/* Pass the wordCloudData to the WordCloud visualization component */}
+        <WordCloud words={wordCloudData} />
+      </div>
+    );
+  };
+
+  const AgentAnalytics = ({ data }) => {
+    const { result } = useContext(ResultContext);
+    const sentimentSummary = result?.pie || {};
+    const data2 = result?.parallel || {};
+    
+      return (
+        <div className="grid grid-cols-1 gap-6 p-4">
+          {/* Personality Parallel Coordinates */}
+          <div className="bg-white p-1 rounded-lg shadow-md">
+            <h2 className="text-xl font-semibold mb-4">Personality Parallel Coordinates</h2>
+            <ParallelCoordinatesChart className="para-cord" agentData={data2} />
+          </div>
+    
+          {/* Sentiment Pie Chart */}
+          <div className="bg-white p-4 rounded-lg shadow-md">
+            <h2 className="text-xl font-semibold mb-4">Sentiment Pie Chart</h2>
+            <SentimentPieChart className="pie" sentimentScores={sentimentSummary} />
+          </div>
+    
+          {/* Word Cloud */}
+          <div className="col-span-1 bg-white p-4 rounded-lg shadow-md">
+            <h2 className="text-xl font-semibold mb-4">Comment Word Cloud</h2>
+            {/*<WordCloudComponent data={data} />*/}
+          </div>
+        </div>
+      );
+    };
+    
+
+  export default AgentAnalytics;
+</file>
+
+<file path="src/main.jsx">
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import App from './App.jsx'
+import { ResultProvider } from './ResultContext'
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+   <ResultProvider>
+      <App />
+    </ResultProvider>
+  </StrictMode>,
+)
+</file>
+
+<file path="src/pages/pages.css">
+.file-input{
+    margin: 50px auto ; 
+    max-width: 30%; 
+}
+
+.content-loader{
+    background-color:#eaeae3; 
+    margin: auto; 
+    border-radius: 1em ;
+    max-width: 80%; 
+
+}
+</file>
+
+<file path="src/pages/Step1.jsx">
+import React, { useState } from "react";
+import TextInput from "../components/TextInput/TextInput";
+import './pages.css'; 
+
+const Step1 = ({ onFileUploaded, trackName, onTrackNameChange }) => {
+  const [audioFile, setAudioFile] = useState(null);
+
+  const handleAudioUpload = (event) => {
+    const file = event.target.files[0];
+    if (file && file.type.startsWith("audio/")) {
+      setAudioFile(file);
+      onFileUploaded(file); // Notify App.jsx that a file has been uploaded
+    } else {
+      alert("Please upload a valid audio file.");
+    }
+  };
+
+  return (
+    <div>
+      <h1 className="text-3xl font-semibold mb-4">Step 1: Upload Track</h1>
+      <div className="max-w-sm space-y-3">
+        <TextInput
+          type="text"
+          id="track-name-input"
+          placeholder="Input Track Name"
+          value={trackName}
+          onChange={(e) => onTrackNameChange(e.target.value)} // Pass the new track name back to App.jsx
+        />
+      </div>
+
+      <div
+        className={`file-input flex items-center justify-center w-full h-64 border-2 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100 ${
+          audioFile ? 'bg-green-100' : ''
+        }`}
+      >
+        <label
+          htmlFor="dropzone-file"
+          className="flex flex-col items-center justify-center w-full h-full"
+        >
+          <div className="flex flex-col items-center justify-center pt-5 pb-6">
+            <svg
+              className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 20 16"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+              />
+            </svg>
+            {!audioFile ? (
+              <>
+                <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                  <span className="font-semibold">Click to upload</span> or drag and drop
+                </p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">
+                  MP3, WAV, or AAC (MAX. 50MB)
+                </p>
+              </>
+            ) : (
+              <p className="text-sm text-green-800 font-semibold">
+                {audioFile.name}
+              </p>
+            )}
+          </div>
+          <input
+            id="dropzone-file"
+            type="file"
+            className="hidden"
+            onChange={handleAudioUpload}
+          />
+        </label>
+      </div>
+    </div>
+  );
+};
+
+export default Step1;
+</file>
+
+<file path="src/pages/Step2.jsx">
+import React, { useState, useEffect } from "react";
+import ProgressBar from "../components/ProgressBar/ProgressBar";
+import PulseLoader from "../components/PulseLoader/PulseLoader";
+
+const Step2 = ({ onAnalysisComplete }) => {
+    const [round, setRound] = useState(0);
+    const [isAnalyzingDone, setIsAnalyzingDone] = useState(false);
+    const totalRounds = 8;
+
+    useEffect(() => {
+        // Check if analysis is complete
+        if (round >= totalRounds) {
+            setIsAnalyzingDone(true);
+            onAnalysisComplete();
+            return;
+        }
+
+        // Start the round
+        const timeout = setTimeout(() => {
+            setRound(prev => prev + 1);
+        }, 10000);
+
+        return () => clearTimeout(timeout);
+    }, [round, totalRounds, onAnalysisComplete]);
+
+    return (
+        <div>
+            <h1 className="text-3xl font-semibold mb-4">Step 2: Analyzing</h1>
+
+            {!isAnalyzingDone && <PulseLoader />}
+
+            <p className="text-center">
+                {!isAnalyzingDone 
+                    ? `Analyzing Round ${round + 1} - AI is analyzing...` 
+                    : "Your Analytics are Ready!"}
+            </p>
+
+            <div className="space-y-5">
+                <ProgressBar value={(round / totalRounds) * 100} />
+            </div>
+        </div>
+    );
+};
+
+export default Step2;
+</file>
+
+<file path="src/pages/Step3.jsx">
+import React, { useEffect, useState, useContext } from "react";
+const dataPath = import.meta.env.VITE_EXTERNAL_DATA_PATH;
+import AgentAnalytics from "../components/Visualization";
+import CommentsSection from "../components/CommentSection/CommentSection";
+import { ResultContext } from "../ResultContext";
+
+const Step3 = () => {
+  const [agentData, setAgentData] = useState(null);
+  // Access the global result from the context
+  const { result } = useContext(ResultContext);
+
+  useEffect(() => {
+    fetch(dataPath)
+      .then((res) => res.json())
+      .then((json) => setAgentData(json))
+      .catch((err) => console.error("Failed to load agent data:", err));
+  }, []);
+
+  return (
+    <div>
+      <h1 className="text-3xl font-semibold mb-4">Your Track Analytics</h1>
+      <div className="mb-6">
+        <h4 className="text-lg font-semibold">Track Information</h4>
+        {/* Replace the static summary with the transcription from the global result */}
+        <p>
+          Summary:{" "}
+          {result && result.transcription
+            ? result.transcription
+            : "Loading transcription..."}
+        </p>
+      </div>
+      <div className="mb-6">
+        <h4 className="text-lg font-semibold">Sentiment Visualization</h4>
+        {agentData ? (
+          <AgentAnalytics data={agentData} />
+        ) : (
+          <p>Loading agent analytics...</p>
+        )}
+      </div>
+      <CommentsSection />
+    </div>
+  );
+};
+
+export default Step3;
+</file>
+
+<file path="src/ResultContext.jsx">
+import React, { createContext, useState } from 'react';
+
+export const ResultContext = createContext();
+
+export const ResultProvider = ({ children }) => {
+  const [result, setResult] = useState(null);
+
+  return (
+    <ResultContext.Provider value={{ result, setResult }}>
+      {children}
+    </ResultContext.Provider>
+  );
+};
+</file>
+
+<file path="vite.config.js">
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [
+    react(),
+    tailwindcss(),
+  ],
+})
+</file>
+
+</files>
