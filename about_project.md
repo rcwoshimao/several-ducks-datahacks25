@@ -1,3 +1,5 @@
+# Tracktion
+
 ## Inspiration
 
 Nowadays, everyone is capable of contributing to pop culture--Whether it's through being an independent artist promoting their music on TikTok, someone posting their hot takes on Twitter, or a niche micro-influencer building a dedicated following. Social media has given everyone the opportunity to join the worldwide conversation.  
@@ -8,13 +10,13 @@ This tool would allow artists to gauge online response to new music, improve the
 
 ## What it does
 
-Tracktion allows an artist to upload an audio file of their song.  Our tool listens to the song and uses agentic AI chatbots to simulate online discourse about that song before it's released.
+**Tracktion** allows an artist to upload an song of their choice. Our tool listens to the song and analyzes the semantics and motifs about the audio, and synthesizes it into text form. Then, we have a series of agentic AI chatbots to simulate online discourse about that song before it's released.
 
 We then run sentiment analysis on these conversations to assess if the tone is positive, negative, or mixed overall. The result demonstrates potential public reception to the artist, giving artists early insight to how their work will be received.
 
 This helps:
-    - **Independent artists** who may not have as many resources optimize their music to better suit public demand
-    - **Established artists** who want to avoid possible PR risks
+- **Independent artists** who may not have as many resources optimize their music to better suit public demand
+- **Established artists** who want to avoid possible PR risks
 
 ## How we built it
 
@@ -36,7 +38,7 @@ This helps:
 
 - Ethan: Proud of managing the sentiment analysis and writing functions to analyze overall trends in simulated tweets
 
-- Kyle: Proud of building the Tracktion and model pre-processing
+- Kyle: Proud of building the agentic chatbots and model pre-processing for the audio analyzer
 
 - Eric: Proud of model training, fine tuning, and working with sentiment analysis
 
