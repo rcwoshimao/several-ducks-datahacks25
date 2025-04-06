@@ -6,6 +6,11 @@ import Step2 from "./pages/Step2";
 import Step3 from "./pages/Step3";
 import ModernButton from "./components/ModernButton/ModernButton";
 import "./App.css";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+
+// Register necessary components
+ChartJS.register(ArcElement, Tooltip, Legend);
+
 
 const pageVariants = {
   initial: { opacity: 0, x: 50 },
