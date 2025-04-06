@@ -8,7 +8,7 @@ This tool would allow artists to gauge online response to new music, improve the
 
 ## What it does
 
-PR-View allows an artist to upload an audio file of their song.  Our tool listens to the song and uses agentic AI chatbots to simulate online discourse about that song before it's released.
+Tracktion allows an artist to upload an audio file of their song.  Our tool listens to the song and uses agentic AI chatbots to simulate online discourse about that song before it's released.
 
 We then run sentiment analysis on these conversations to assess if the tone is positive, negative, or mixed overall. The result demonstrates potential public reception to the artist, giving artists early insight to how their work will be received.
 
@@ -36,7 +36,7 @@ This helps:
 
 - Ethan: Proud of managing the sentiment analysis and writing functions to analyze overall trends in simulated tweets
 
-- Kyle: Proud of building the PR-View and model pre-processing
+- Kyle: Proud of building the Tracktion and model pre-processing
 
 - Eric: Proud of model training, fine tuning, and working with sentiment analysis
 
@@ -57,7 +57,7 @@ We learned a lot throughout the development of this project including:
 - The power of a **Multi-Modal** approach when combining audio and text 
 
 
-## What's next for PR-View
+## What's next for Tracktion
 
 1. Creating a better audio analysis model (more music, varied genres, labels). 
     - ensemble methods for audio analysis
