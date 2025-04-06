@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Sidebar from "./components/Sidebar";
 import Step1 from "./pages/Step1";
 import Step2 from "./pages/Step2";
 import Step3 from "./pages/Step3";
 import ModernButton from "./components/ModernButton/ModernButton";
+import { ResultContext } from "./ResultContext";
 import "./App.css";
+
 
 
 const pageVariants = {
@@ -29,6 +31,7 @@ function App() {
   const [isAnalyzingDone, setIsAnalyzingDone] = useState(false);
   const [isLoading, setIsLoading] = useState(false); 
   const [error, setError] = useState(null); 
+  const { setResult } = useContext(ResultContext);
 
   const handleAnalyzeApiCall = async () => {
     if (!audioFile || !trackName.trim()) {
@@ -46,12 +49,15 @@ function App() {
 
     try {
       console.log(`Sending analysis request to: ${API_ENDPOINT}`); // For debugging
-
+      
+      setStep(2); // Move to Step 2 (Analyzing page)
+      
       const response = await fetch(API_ENDPOINT, {
         method: 'POST',
         body: formData,
       });
-
+      
+      
       // Check if the request was successful
       if (!response.ok) {
         let errorMsg = `API request failed with status ${response.status}`;
@@ -67,10 +73,10 @@ function App() {
       
       // --- Success ---
       console.log("API request successful, proceeding to Step 2.");
-      setStep(2); // Move to Step 2 (Analyzing page)
       
       // If you need data *back* from the API before proceeding:
       const result = await response.json();
+      setResult(result);
       console.log("API Response Data:", result);
 
     } catch (err) {
