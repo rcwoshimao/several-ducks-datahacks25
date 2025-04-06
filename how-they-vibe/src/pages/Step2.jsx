@@ -18,7 +18,7 @@ const Step2 = ({ onAnalysisComplete }) => {
         // Start the round
         const timeout = setTimeout(() => {
             setRound(prev => prev + 1);
-        }, 1000);
+        }, 0);
 
         return () => clearTimeout(timeout);
     }, [round, totalRounds, onAnalysisComplete]);

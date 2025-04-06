@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 const dataPath = import.meta.env.VITE_EXTERNAL_DATA_PATH;
 import AgentAnalytics from "../components/Visualization";
+import CommentsSection from "../components/CommentSection/CommentSection";
 
 const Step3 = () => {
   const [agentData, setAgentData] = useState(null);
@@ -29,6 +30,7 @@ const Step3 = () => {
           <p>Loading agent analytics...</p>
         )}
       </div>
+      <CommentsSection /> 
     </div>
   );
 };
