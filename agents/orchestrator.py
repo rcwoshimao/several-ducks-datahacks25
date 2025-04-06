@@ -252,7 +252,7 @@ def simulate(
     
 
     formatted = json.dumps(output_response, indent=4)
-    print(formatted)
+    return formatted
 
 if __name__ == "__main__":
     simulate(
