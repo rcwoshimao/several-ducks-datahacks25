@@ -18,11 +18,11 @@ This helps:
 
 ## How we built it
 
-Webscraped 2,000 YouTube clips from a public kaggle dataset [link](https://www.kaggle.com/datasets/googleai/musiccaps?resource=download) and did transfer learning on a 286 million parameter multi-modal OpenAI audio analysis model called Whisper-small. 
+Webscraped 2,000 YouTube clips from a public [kaggle dataset](https://www.kaggle.com/datasets/googleai/musiccaps?resource=download) and did transfer learning on a 286 million parameter multi-modal OpenAI audio analysis model called Whisper-small. 
 
 Utilized Gemini API to simulate tweets with prompt engineering. 
 
-Used a pre-trained sentiment analysis model from HuggingFace [link](https://huggingface.co/cardiffnlp/twitter-roberta-base-sentiment-latest) trained on 124 million tweets from January 2018 to December 2021 to determine and visualize the overall trend in responses to the audio file. 
+Used a pre-trained [sentiment analysis model](https://huggingface.co/cardiffnlp/twitter-roberta-base-sentiment-latest) from HuggingFace trained on 124 million tweets from January 2018 to December 2021 to determine and visualize the overall trend in responses to the audio file. 
 
 ## Challenges we ran into
 
