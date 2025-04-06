@@ -140,6 +140,7 @@ def simulate(
         agent_count=10, 
         rounds=5, 
         first_response_count=5,
+        round_agents=3,
         temperature=0.7,
         confrontational_decay=0.48,
     ):
@@ -217,6 +218,8 @@ def simulate(
         if not interested_agents:
             print("All agents are apathetic. Ending simulation.")
             break
+        interested_agents = random.sample(list(interested_agents), k=round_agents)
+        
         for i in interested_agents:
             agent_personality = agents[i]
             # need to load the agent persona and name into the input_thread_json then convert to a string
@@ -241,9 +244,11 @@ def simulate(
                     initial_responses.append(response[0])
                 else:
                     apathetic_agents.add(i)
+                if apathy_probability < 0.1:
+                    apathetic_agents.add(i)
             else:
                 print(f"Agent {i} failed to generate a response.")
-    
+        
     
 
     formatted = json.dumps(output_response, indent=4)
@@ -255,6 +260,7 @@ if __name__ == "__main__":
         agent_count=10,
         rounds=8,
         first_response_count=2,
+        round_agents=5,
         temperature=0.7,
         confrontational_decay=0.48,
     )

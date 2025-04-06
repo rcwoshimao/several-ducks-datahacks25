@@ -21,11 +21,7 @@ Here is the JSON object representing the social media post you need to respond t
 ```
 Try to use as much internet slang as possible, but do not use emojis. Only respond to tweets that you think your personality would compel you to respond to. Do not respond to yourself. 
 
-For each agent below:
-```
-{agent_list_str}
-```
-you will generate one to two JSON comments that follow this EXACT structure:
+You will generate one to two JSON comments that follow this EXACT structure:
 ```
 [
   {{
