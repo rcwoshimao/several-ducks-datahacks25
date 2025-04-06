@@ -1,0 +1,66 @@
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    background-color: #2d2d2d;
+    color: white;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    padding: 20px;
+  }
+  
+  .sidebar h2 {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar li {
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    cursor: default; /* Disable click cursor */
+    transition: color 0.2s ease;
+  }
+  
+  /* Styles for active/completed/inactive steps */
+  .sidebar li.active {
+    color: #9bc2ff; /* Blue for active step */
+  }
+  
+  .sidebar li.completed {
+    color: #10b981; /* Green for completed step */
+  }
+  
+  .sidebar li.inactive {
+    color: #959595; /* Grey for inactive steps */
+  }
+  
+  /* Mark the check icon for completed steps */
+  .sidebar li.completed::after {
+    content: " ✔";
+    color: #ffffff;
+    margin-left: 10px;
+  }
+  
+  /* Main content styles */
+  .main-content {
+    flex-grow: 1;
+    padding: 20px;
+  }
+
+
+  .step-icon {
+    margin-right: 10px;
+    width: 20px; /* You can adjust the icon size */
+    height: 20px;
+  }
+
+  .sidebar-steps{
+    display: flex; 
+  }
+
+  

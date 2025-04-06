@@ -1,0 +1,95 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "agents": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "personality": {
+              "type": "object",
+              "properties": {
+                "Sarcastic": { "type": "number" },
+                "Anger": { "type": "number" },
+                "Neuroticism": { "type": "number" },
+                "Toxcitiy": { "type": "number" },
+                "Obsession": { "type": "number" },
+                "Elitism": { "type": "number" },
+                "Sycophantic": { "type": "number" },
+                "Loyalty": { "type": "number" },
+                "Apathy": { "type": "number" }
+              },
+              "required": [
+                "Sarcastic", "Anger", "Neuroticism", "Toxcitiy",
+                "Obsession", "Elitism", "Sycophantic", "Loyalty", "Apathy"
+              ]
+            },
+            "sentiment": { "type": "number" },
+            "post_text": { "type": "string" },
+            "message_id": { "type": "string" },
+            "summary": { "type": "string" },
+            "comments": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "author_name": { "type": "string" },
+                  "message_id": { "type": "string" },
+                  "comment_text": { "type": "string" },
+                  "replies": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "author_name": { "type": "string" },
+                        "message_id": { "type": "string" },
+                        "comment_text": { "type": "string" },
+                        "replies": {
+                          "type": "array",
+                          "items": { "type": "object" }
+                        }
+                      },
+                      "required": [
+                        "author_name", "message_id", "comment_text", "replies"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "author_name", "message_id", "comment_text", "replies"
+                ]
+              }
+            }
+          },
+          "required": [
+            "name", "personality", "sentiment",
+            "post_text", "message_id", "summary", "comments"
+          ]
+        }
+      },
+      "sentiment_counts": {
+        "type": "object",
+        "properties": {
+          "positive": { "type": "number" },
+          "neutral": { "type": "number" },
+          "negative": { "type": "number" }
+        },
+        "required": ["positive", "neutral", "negative"]
+      },
+      "word_frequencies": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "text": { "type": "string" },
+            "value": { "type": "number" }
+          },
+          "required": ["text", "value"]
+        }
+      }
+    },
+    "required": ["agents", "sentiment_counts", "word_frequencies"]
+  }
+  
