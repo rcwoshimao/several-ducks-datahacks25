@@ -1,6 +1,7 @@
 import sys
 import os
 import json
+from collections import Counter
 
 # Assuming server.py is in music_analyzer and the repository root is one level up:
 repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
@@ -250,6 +251,41 @@ def analyze():
         confrontational_decay=0.48,
     )
 
+    def only_letters(s):
+        return ''.join(c.lower() for c in s if c.isalpha())
+    banned = [
+        "",
+        "messageid",
+        "commenttext",
+        "replies",
+        "authorname",
+        "agent",
+        "this",
+        "a",
+        "is",
+        "i",
+        "for",
+        "s"
+    ]
+
+    print("trying cloud")
+    print(type(thread_json))
+    print(f"1 {thread_json}")
+    thread_json_str = thread_json.split(" ")
+    thread_json_str = [only_letters(i) for i in thread_json_str if only_letters(i) not in banned]
+    print(f"2 {thread_json_str}")
+    freq = Counter(thread_json_str)
+    th_filtered = {word: count for word, count in freq.items() if count > 2}
+    print(f"1 {th_filtered}")
+    calc_cloud = {
+        'word_frequencies': [] 
+    }
+    for key, value in th_filtered.items():
+        calc_cloud["word_frequencies"].append({
+            "text": key,
+            "value": value
+        })  
+
     with open("output.json", "w") as f:
         json.dump(thread_json, f, ensure_ascii=False, indent=4)
     thread_json = json.loads(thread_json)
@@ -277,14 +313,13 @@ def analyze():
             "negative": neg_count,
             "neutral": neu_count
         }
-    }
-
-    print("trying cloud")
-    try:
-        calc_cloud = calculate_cloud(thread_json)
-    except Exception as e:
-        print(e)
-        calc_cloud = None
+    }  
+    
+    # try:
+    #     calc_cloud = calculate_cloud(thread_json)
+    # except Exception as e:
+    #     print(e)
+    #     calc_cloud = None
 
     out_dict = {
         "transcription": transcription,
