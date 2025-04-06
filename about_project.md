@@ -46,13 +46,13 @@ Used a pre-trained [sentiment analysis model](https://huggingface.co/cardiffnlp/
 
 We learned a lot throughout the development of this project including:
 
-    - How to work with **LLMs** to simulate dynamic and realistic conversation
+- How to work with **LLMs** to simulate dynamic and realistic conversation
 
-    - Basic **Natural Langauge Processing** to interpret human language
+- Basic **Natural Langauge Processing** to interpret human language
 
-    - **Sentiment Analysis** to extract tone and opinion from text
+- **Sentiment Analysis** to extract tone and opinion from text
 
-    - The power of a **multi-modal** approach when combining audio and text 
+- The power of a **multi-modal** approach when combining audio and text 
 
 
 ## What's next for Discourse Simulator
