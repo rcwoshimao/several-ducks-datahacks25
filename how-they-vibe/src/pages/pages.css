@@ -1,0 +1,12 @@
+.file-input{
+    margin: 50px auto ; 
+    max-width: 30%; 
+}
+
+.content-loader{
+    background-color:#eaeae3; 
+    margin: auto; 
+    border-radius: 1em ;
+    max-width: 80%; 
+
+}

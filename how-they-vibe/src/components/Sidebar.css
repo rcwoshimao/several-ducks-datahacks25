@@ -21,23 +21,22 @@
   
   .sidebar li {
     padding: 15px 20px;
-    border-radius: 5px;
     margin-bottom: 10px;
     cursor: default; /* Disable click cursor */
-    transition: background-color 0.2s ease;
+    transition: color 0.2s ease;
   }
   
   /* Styles for active/completed/inactive steps */
   .sidebar li.active {
-    background-color: #3b82f6; /* Blue for active step */
+    color: #9bc2ff; /* Blue for active step */
   }
   
   .sidebar li.completed {
-    background-color: #10b981; /* Green for completed step */
+    color: #10b981; /* Green for completed step */
   }
   
   .sidebar li.inactive {
-    background-color: #4b5563; /* Grey for inactive steps */
+    color: #959595; /* Grey for inactive steps */
   }
   
   /* Mark the check icon for completed steps */
@@ -52,19 +51,16 @@
     flex-grow: 1;
     padding: 20px;
   }
-  
-  /* Button Styles */
-  button {
-    background-color: #3b82f6;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
+
+
+  .step-icon {
+    margin-right: 10px;
+    width: 20px; /* You can adjust the icon size */
+    height: 20px;
   }
-  
-  button:hover {
-    background-color: #2563eb;
+
+  .sidebar-steps{
+    display: flex; 
   }
+
   

@@ -1,8 +1,15 @@
 import React from "react";
 import "./Sidebar.css"; 
+import upload from "./../assets/upload.png"; 
+import analyze from "./../assets/analyze.png"; 
+import results from "./../assets/results.png"; 
 
 const Sidebar = ({ currentStep }) => {
-  const steps = ["Upload", "Analyze", "Results"];
+    const steps = [
+        { name: "Upload", icon: upload },
+        { name: "Analyze", icon: analyze},
+        { name: "Results", icon: results },
+      ];
 
   return (
     <div className="sidebar">
@@ -18,8 +25,14 @@ const Sidebar = ({ currentStep }) => {
               : "inactive";
 
           return (
-            <li key={stepNumber} className={stepStatus}>
-              {step}
+            <li key={stepNumber} className={`sidebar-steps ${stepStatus}`}>
+              <img
+                src={step.icon} // Dynamically load the image based on step
+                alt={step.name}
+                className="step-icon"
+              />
+              {step.name}
+
             </li>
           );
         })}
