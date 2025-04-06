@@ -1,3 +1,11 @@
+import sys
+import os
+import json
+
+# Assuming server.py is in music_analyzer and the repository root is one level up:
+repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, repo_root)
+
 import agents.orchestrator
 from flask import Flask, request, jsonify
 import io
@@ -10,7 +18,7 @@ from flask_cors import CORS  # Import flask-cors
 from scipy.special import softmax
 from nltk.corpus import stopwords
 import nltk
-
+import emoji
 import agents
 
 
@@ -20,28 +28,39 @@ CORS(app)
 
 roberta = "cardiffnlp/twitter-roberta-base-sentiment"
 model_sena = AutoModelForSequenceClassification.from_pretrained(roberta)
-tokenizer = AutoTokenizer.from_pretrained(roberta)
+tokenizer_roberta = AutoTokenizer.from_pretrained(roberta)
 
 def tweet_sentiment(tweet):
-    encoded_tweet = tokenizer(tweet, return_tensors='pt')
+    encoded_tweet = tokenizer_roberta(tweet, return_tensors='pt')
     output = model_sena(**encoded_tweet)
     scores = softmax(output[0][0].detach().numpy())
     return scores
 
+def make_agent(name, personality, sentiment, sign):
+    for key in personality.keys():
+        personality[key] = str(personality[key])
+    return {
+        "name" : name,
+        "personality" : personality,
+        "sentiment" : str(sentiment),
+        "sign": sign
+    }
+
 def calculate_parallel(tweet_data):
     # formatting
-    return_template = { # agent 1, agent 2, ... 
-        "agents": [
-
-        ]
+    return_template = {
+        "agents": []
     }
+    
+    agent_persona_list = agents.orchestrator.load_agents(10)
+
     agent_personalities = {}
     agent_sentiments = {} # agent 47 : [0.84, 0.99, 0.75]
     agent_sign = {} # agent 47 : [pos, neg, neu]
 
-    stack = tweet_data['comments']
+    stack = tweet_data['replies']
     visited = set()
-    responses = []
+    # responses = []
     while stack:
         # examining current tweet
         tweet = stack.pop()
@@ -49,8 +68,10 @@ def calculate_parallel(tweet_data):
 
         # processing tweet
         author = tweet['author_name']
+        agent_num = int(author.split(" ")[1])
+
         if agent_personalities.get(author, None) == None: # note: need to standardize
-            agent_personalities[author] = tweet['personality']
+            agent_personalities[author] = agent_persona_list[agent_num]
 
         neg, neu, pos = tweet_sentiment(tweet['comment_text'])
 
@@ -78,43 +99,8 @@ def calculate_parallel(tweet_data):
     # return schema
     return return_template
     
-def calculate_pi(tweet_data, temp=0.69):
-    stack = tweet_data['comments']
-    visited = set()
-    responses = []
-    while stack:
-        tweet = stack.pop()
-        visited.add(tweet['message_id'])
-        responses.append(tweet['comment_text'])
-        for new_tweet in tweet['replies']:
-            if new_tweet['message_id'] not in visited:
-                stack.append(new_tweet)
-    senti = []
-    for resp in responses:
-        senti.append(tweet_sentiment(resp))
-    
-    plus, minus, zero = 0, 0, 0
-
-    for neg, neu, pos in senti:
-        if neg > temp:
-            minus += 1
-        elif pos > temp:
-            plus += 1
-        else:
-            zero += 1
-        
-    schema = {
-        "sentiment_counts": {
-            "positive" : plus,
-            "negative" : minus,
-            "neutral" : zero
-        }
-    }
-
-    return schema
-        
 def calculate_cloud(tweet_data, temp=0.69):
-    stack = tweet_data['comments']
+    stack = tweet_data['replies']
     visited = set()
     responses = []
     while stack:
@@ -197,6 +183,16 @@ def load_finetuned_model():
     base_model.eval()
     return base_model
 
+def convert_floats_to_str(obj):
+    if isinstance(obj, dict):
+        return {k: convert_floats_to_str(v) for k, v in obj.items()}
+    elif isinstance(obj, list):
+        return [convert_floats_to_str(item) for item in obj]
+    elif isinstance(obj, float):
+        return str(obj)
+    else:
+        return str(obj)
+
 # Load the fine-tuned model and processor once at startup.
 model = load_finetuned_model()
 processor = WhisperProcessor.from_pretrained("openai/whisper-small")
@@ -234,12 +230,18 @@ def analyze():
     # Generate transcription using the model
     predicted_ids = model.generate(input_features)
     transcription = processor.tokenizer.batch_decode(predicted_ids, skip_special_tokens=True)[0]
-
-    with open("output.txt", "w") as f:
-        f.write(transcription)
     
+    to_write = {
+        "post_text": transcription,
+        "message_id": "MAIN",
+        "replies": []
+    }
+
+    with open("output.json", "w") as f:
+        json.dump(to_write, f, ensure_ascii=False, indent=4)
+
     thread_json = agents.orchestrator.simulate(
-        input_file_path="output.txt",
+        input_file_path="output.json",
         agent_count=10,
         rounds=8,
         first_response_count=2,
@@ -247,17 +249,53 @@ def analyze():
         temperature=0.7,
         confrontational_decay=0.48,
     )
-    
-    parallels = calculate_parallel(thread_json)
-    calc_pie = calculate_pi(thread_json)
-    calc_cloud = calculate_cloud(thread_json)
 
-    return jsonify({
+    with open("output.json", "w") as f:
+        json.dump(thread_json, f, ensure_ascii=False, indent=4)
+    thread_json = json.loads(thread_json)
+
+    print(type(thread_json))
+
+    # with open("output.json", "r") as f:
+        # thread_json = json.load(f)
+
+    print("trying parallels")
+    try:
+        parallels = calculate_parallel(thread_json)
+    except Exception as e:
+        print(e)
+        parallels = None
+    
+    print("trying pie")
+    parallels_str = json.dumps(parallels)
+    pos_count = parallels_str.count("positive")
+    neu_count = parallels_str.count("neutral")
+    neg_count = parallels_str.count("negative")
+    calc_pie = {
+        "sentiment_counts": {
+            "positive": pos_count,
+            "negative": neg_count,
+            "neutral": neu_count
+        }
+    }
+
+    print("trying cloud")
+    try:
+        calc_cloud = calculate_cloud(thread_json)
+    except Exception as e:
+        print(e)
+        calc_cloud = None
+
+    out_dict = {
         "transcription": transcription,
         "parallel": parallels,
         "pie": calc_pie,
         "cloud": calc_cloud
-    })
+    }
+    out_dict = convert_floats_to_str(out_dict)
+    print(out_dict)
+
+    return jsonify(out_dict)
 
 if __name__ == '__main__':
     # Run the server on port 8081
