@@ -70,4 +70,12 @@ We learned a lot throughout the development of this project including:
     
 3. Developing sentiment analysis to process more emotions than positive and negative.
     - improve existing integration with our website analytics
-4. Fast delivered Frontend for presenting the product 
+4. Fast delivered Frontend for presenting the product
+
+
+## Team members 
+- [Kyle Trinh](https://github.com/pink10000)
+- [Eric Song](https://github.com/e7song) 
+- [Rebecca Chen](https://github.com/rcwoshimao)
+- [Ethan Earnn](https://github.com/earnn04) 
+
