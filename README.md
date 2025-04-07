@@ -1,5 +1,6 @@
 # Dathack 2025 Team Several Ducks - Tracktion/ How They Vibe
 Measure the online reception to a new song by analyzing the sentiment using agentic AI conversations trained to simulate and reflect public online discourse.
+
 ![Demo gif](https://github.com/rcwoshimao/several-ducks-datahacks25/blob/main/demo.gif)
 #### [Devpost](https://devpost.com/software/discourse-simulator)
 #### [Slides](https://docs.google.com/presentation/d/1fz6gjxrmsjUSEpR7jOwBh9YIFtZabDLP-i6_-M_2J-c/edit?usp=sharing)
