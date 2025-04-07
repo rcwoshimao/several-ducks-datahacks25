@@ -19,6 +19,8 @@ This helps:
 - **Independent artists** who may not have as many resources optimize their music to better suit public demand
 - **Established artists** who want to avoid possible PR risks
 
+
+![Demo gif](https://github.com/rcwoshimao/several-ducks-datahacks25/blob/main/demo.gif)
 ## How we built it
 
 - Webscraped 2,000+ YouTube clips from a public [dataset](https://www.kaggle.com/datasets/googleai/musiccaps?resource=download) and did transfer learning on a 286 million parameter multi-modal OpenAI audio analysis model called Whisper-small. 
