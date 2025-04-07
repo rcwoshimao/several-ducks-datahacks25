@@ -1,5 +1,9 @@
 # Dathack 2025 Team Several Ducks - Tracktion/ How They Vibe
 Measure the online reception to a new song by analyzing the sentiment using agentic AI conversations trained to simulate and reflect public online discourse.
+![Demo gif](https://github.com/rcwoshimao/several-ducks-datahacks25/blob/main/demo.gif)
+#### [Devpost](https://devpost.com/software/discourse-simulator)
+#### [Slides](https://docs.google.com/presentation/d/1fz6gjxrmsjUSEpR7jOwBh9YIFtZabDLP-i6_-M_2J-c/edit?usp=sharing)
+
 
 ## Inspiration
 
@@ -19,8 +23,6 @@ This helps:
 - **Independent artists** who may not have as many resources optimize their music to better suit public demand
 - **Established artists** who want to avoid possible PR risks
 
-
-![Demo gif](https://github.com/rcwoshimao/several-ducks-datahacks25/blob/main/demo.gif)
 ## How we built it
 
 - Webscraped 2,000+ YouTube clips from a public [dataset](https://www.kaggle.com/datasets/googleai/musiccaps?resource=download) and did transfer learning on a 286 million parameter multi-modal OpenAI audio analysis model called Whisper-small. 
@@ -73,7 +75,6 @@ We learned a lot throughout the development of this project including:
 3. Developing sentiment analysis to process more emotions than positive and negative.
     - improve existing integration with our website analytics
 4. Fast delivered Frontend for presenting the product
-
 
 ## Team members 
 - [Kyle Trinh](https://github.com/pink10000)
